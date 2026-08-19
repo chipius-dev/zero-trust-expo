@@ -1,0 +1,16 @@
+{
+  "idPrefix": "ITEM",
+  "defaultBranch": "main",
+  "wipLimit": 3,
+  "dashboardMaxRows": 25,
+  "maxContextLines": 120,
+  "testGlobs": [
+    "tooling/test/**/*.test.ts",
+    "test/**/*",
+    "tests/**/*",
+    "src/**/*.test.*",
+    "src/**/*.spec.*",
+    "**/*_test.go",
+    "**/test_*.py"
+  ]
+}

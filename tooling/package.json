@@ -1,0 +1,7 @@
+{
+  "name": "@sdlc/tooling",
+  "private": true,
+  "type": "module",
+  "description": "Process tooling for the agentic SDLC. Zero runtime dependencies: runs on Node >=22.18 native TypeScript type stripping and the built-in node:test runner.",
+  "engines": { "node": ">=22.18" }
+}

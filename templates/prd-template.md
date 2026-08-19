@@ -2,8 +2,8 @@
 
 - **Author(s)**: [Name / AI Agent]
 - **Status**: [Draft | In Review | Approved | Implemented]
-- **Target Release / Milestone**: [Milestone Name in ROADMAP.md]
-- **Roadmap Epic / Task ID**: [TSK-XXX](file:///ROADMAP.md)
+- **Parent initiative**: `ITEM-XXXX`
+- **Backlog epic**: `ITEM-XXXX`
 
 ---
 

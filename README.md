@@ -1,126 +1,109 @@
-# Agentic SDLC Foundation Template
+# Agentic SDLC template
 
-> A production-grade, platform-agnostic foundation for AI-driven software development based on **Matt Pocock's 7 Phases of AI-Driven Development** and **In-Repo Roadmap Decision Tracking**.
+A template repository for projects built mostly by agents. It ships a backlog under
+source control, a generated status dashboard, and a set of checks that fail loudly
+when the process is ignored.
+
+The premise: guardrails beat guidance. Anything this template asks you to do, it also
+checks. Anything it cannot check, it says so out loud rather than pretending.
 
 [![Quality Gate](https://github.com/chipius-dev/agentic-sldc-template/actions/workflows/quality-gate.yml/badge.svg)](https://github.com/chipius-dev/agentic-sldc-template/actions/workflows/quality-gate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
----
+## Start here
 
-## 🌟 Overview
-
-The **Agentic SDLC Template** establishes a disciplined, repeatable, and high-quality Software Development Life Cycle designed specifically for autonomous AI agents and human-AI pair programming.
-
-### Core Tenets
-
-1. **Matt Pocock's 7 Phases of AI-Driven Development**: A proven engineering progression (Idea -> Research -> Prototype -> PRD & Alignment -> Planning -> Execution -> QA & Loopback) preventing "vibe coding" drift and enforcing real engineering fundamentals.
-2. **Mandatory In-Repo Roadmap & Decision Reproducibility**: All tasks, vertical slices, and approved architectural decisions are tracked in [`ROADMAP.md`](file:///ROADMAP.md) with the complete context required to independently reproduce every decision outcome.
-3. **Vendor & Agent Agnostic Core**: Core engineering standards and workflows reside strictly in standard Markdown. Any modern AI assistant (Gemini/Antigravity, Claude, Cursor, Copilot, Windsurf, Roo/Cline) can navigate and execute them without proprietary lock-in.
-4. **Token Hygiene & The "Smart Zone"**: Sizing vertical slices and sessions to stay within optimal context windows (~100k tokens), preventing context bloat and hallucinations.
-5. **High Code Quality & Automated Guardrails**: Built-in verification scripts, linting, architectural checks, and CI workflows guarantee strict standards.
-
----
-
-## 🧭 The 7 Phases of AI-Driven Development
-
-```mermaid
-flowchart TD
-    P1["1. Idea\n(Concept & Motivation)"] --> P2["2. Research\n(Targeted discovery & feasibility)"]
-    P2 --> P3["3. Prototype\n(Exploratory spike & pattern validation)"]
-    P3 --> P4["4. PRD & Alignment\n(Grill-me interview & shared design concept)"]
-    P4 --> P5["5. Implementation Planning\n(In-repo roadmap, Kanban, vertical slices)"]
-    P5 --> P6["6. Execution\n(TDD, Smart Zone token hygiene, atomic coding)"]
-    P6 --> P7["7. QA & Verification\n(Automated test suites, linters, regression & loopback)"]
-    P7 -.->|Iterate / Refine| P5
-```
-
-- **[Phase 1: Idea](file:///docs/workflows/01-idea.md)**: Articulate the core problem, user motivation, and capture in the roadmap backlog.
-- **[Phase 2: Research](file:///docs/workflows/02-research.md)**: Targeted codebase exploration, API feasibility, and library evaluation.
-- **[Phase 3: Prototype](file:///docs/workflows/03-prototype.md)**: Quick, disposable spikes and tracer bullets to de-risk unknown patterns.
-- **[Phase 4: PRD & Alignment](file:///docs/workflows/04-prd-and-alignment.md)**: Formalize requirements and conduct "Grill-Me" alignment to establish a shared design concept.
-- **[Phase 5: Implementation Planning](file:///docs/workflows/05-implementation-planning.md)**: Decompose features into vertical slices on [`ROADMAP.md`](file:///ROADMAP.md) sized for the ~100k token "Smart Zone".
-- **[Phase 6: Execution](file:///docs/workflows/06-execution.md)**: Test-Driven Development (Red -> Green -> Refactor) and atomic commits.
-- **[Phase 7: QA & Loopback](file:///docs/workflows/07-qa-and-verification.md)**: Automated quality gates (`make check`), code review, and loopback cycle for bug fixes or refinements.
-
----
-
-## 📁 Repository Structure
-
-```
-agentic-sldc-template/
-├── AGENTS.md                   # Universal agent entry point & behavioral contract
-├── ROADMAP.md                  # Mandatory in-repo roadmap & reproducible decision log
-├── README.md                   # Repository overview & quickstart guide
-├── CONTRIBUTING.md             # Contribution guidelines for humans and AI agents
-├── LICENSE                     # MIT License
-├── Makefile                    # Standard developer & agent command shortcuts
-│
-├── .agents/                    # Platform & Tool Specific Adapters (isolated)
-│   ├── README.md               # Guide to platform adapter conventions
-│   ├── antigravity/            # Google Antigravity & Gemini rules/skills
-│   ├── cursor/                 # Cursor IDE rules (.cursorrules)
-│   ├── claude/                 # Claude Code instructions (CLAUDE.md)
-│   ├── copilot/                # GitHub Copilot instructions
-│   ├── windsurf/               # Windsurf Cascade rules (.windsurfrules)
-│   └── sync-adapters.sh        # Adapter verification utility
-│
-├── docs/                       # Core SDLC Knowledge Base (Platform Agnostic)
-│   ├── README.md               # Documentation directory overview
-│   ├── roadmap/                # Roadmap & decision reproducibility guides
-│   │   └── README.md
-│   ├── architecture/           # Architecture Decision Records (ADRs) & System Design
-│   │   ├── 0001-template-architecture.md
-│   │   └── template.md
-│   ├── standards/              # Engineering & Quality Standards
-│   │   ├── code-style.md
-│   │   ├── error-handling.md
-│   │   ├── testing-strategy.md
-│   │   └── security.md
-│   └── workflows/              # Matt Pocock's 7 Phases Playbooks
-│       ├── 01-idea.md
-│       ├── 02-research.md
-│       ├── 03-prototype.md
-│       ├── 04-prd-and-alignment.md
-│       ├── 05-implementation-planning.md
-│       ├── 06-execution.md
-│       └── 07-qa-and-verification.md
-│
-├── templates/                  # Reusable SDLC Markdown Templates
-│   ├── prd-template.md         # Product Requirements Document (with Alignment)
-│   ├── rfc-template.md         # Technical Design Document
-│   ├── plan-template.md        # Implementation Plan (Vertical Slices)
-│   ├── adr-template.md         # Architecture Decision Record (Reproducibility)
-│   ├── roadmap-task-template.md# Roadmap Task Ticket Template
-│   └── review-checklist.md     # Code Review & QA Checklist
-│
-├── tooling/                    # Verification & Quality Tooling
-│   ├── scripts/
-│   │   ├── check-quality.sh    # Unified repository validation script
-│   │   └── validate-docs.py    # Link, format, and structure checker
-│   └── hooks/                  # Pre-commit & git hooks
-│
-└── .github/                    # GitHub Workflows & Automation
-    └── workflows/
-        └── quality-gate.yml    # Continuous Integration quality gate
-```
-
----
-
-## 🚀 Quickstart
-
-### 1. Running Quality Checks
-Run all quality and consistency checks locally:
 ```bash
-make check
+make help      # every verb
+make doctor    # is this environment sane, are you current with origin
+make status    # what is in flight, what is next
 ```
 
-### 2. Managing Tasks on the In-Repo Roadmap
-- Review active milestones and tasks in [`ROADMAP.md`](file:///ROADMAP.md).
-- Transition items: `[Backlog]` $\rightarrow$ `[Ready]` $\rightarrow$ `[In Progress]` $\rightarrow$ `[Done]`.
-- Record approved technical decisions in the Decision Log with full reproducibility details.
+Agents read [AGENTS.md](AGENTS.md). It is deliberately short. `CLAUDE.md` is generated
+from it, so per-surface rules files cannot drift; adding another agent surface means
+adding a renderer, never a second copy of the rules.
 
----
+## What is actually enforced
 
-## 📄 License
+| Invariant | Enforcement |
+| :--- | :--- |
+| One source of truth for status | `ROADMAP.md`, `backlog/index.json`, `CLAUDE.md` and the PR template are generated; hand-editing any of them fails `make check` |
+| No vague work items | `make lint` rejects an item promoted past `draft` without scope, exclusions, decisions, and falsifiable acceptance criteria |
+| Acceptance criteria that can fail | Criteria must read as test names; "works correctly" is rejected by name |
+| "Done" means tested | An item cannot be `done` while a promised test is absent from the repo |
+| Stable, never-reused IDs | IDs appear in branch names, commit trailers and PR titles; archived rows keep every ID forever |
+| Branch discipline | CI rejects a branch or PR title that does not carry a live, in-progress item ID |
+| WIP limit | Counted by `make lint`, not by hoping |
+| Status matching reality | The dashboard lists items whose status contradicts git |
+| Docs that point at real files | Broken and `file://` links fail the build |
+| The template itself works | CI drives the whole loop end to end in a temporary repo |
 
-This project is licensed under the MIT License. See [LICENSE](file:///LICENSE) for details.
+## Layout
+
+```
+AGENTS.md                  Agent contract. Short. The one instruction file.        (agent)
+CLAUDE.md                  Generated pointer to AGENTS.md.                          (agent, generated)
+ROADMAP.md                 Generated dashboard. Never hand-edited.                  (human, generated)
+sdlc.config.json           WIP limit, ID prefix, test globs. The stack seam.        (agent, CI)
+Makefile                   One verb per intent. CI calls these exact targets.       (all)
+
+backlog/
+  SCHEMA.md                The item contract and every lint code.                   (agent)
+  items/<ID>.md            Source of truth for status. One file per item.           (all)
+  archive/<YYYY>.md        Rollup of closed items; keeps IDs from being reused.     (all)
+  index.json               Generated machine index: "what should I work on?"        (agent, generated)
+
+docs/
+  lifecycle.md             The three gates and a worked example.                    (human, agent)
+  definition-of-done.md    Source for the PR template; says what CI cannot prove.   (human, agent)
+  standards/               Style, error handling, testing, security.                (human, agent)
+  architecture/            ADRs. Cite them instead of re-deciding.                  (human, agent)
+
+templates/                 PRD, plan, ADR, RFC skeletons.                           (human)
+tooling/
+  src/                     The checks. Zero dependencies, Node >= 22.18.            (CI, agent)
+  test/                    Tests for the checks, including the template self-test.  (CI)
+  hooks/pre-push           Client-side guard. CI enforces the same rules anyway.    (human)
+  init.sh                  Strips template framing from a new project.              (human)
+.github/
+  workflows/quality-gate.yml   Calls `make ci`. No logic of its own.                (CI)
+  rulesets/main.json           Branch protection to import; a template cannot force it. (human)
+  pull_request_template.md     Generated from the Definition of Done.               (human, generated)
+```
+
+Files marked *(human)* exist only for people: `templates/` and `docs/standards/` are
+reference material an agent reads on demand rather than every session, and
+`rulesets/main.json` is something a person must apply in the forge UI.
+
+## Requirements
+
+- **Node 22.18+ or 24+.** The tooling is TypeScript executed directly by Node's native
+  type stripping. There is no build step, no `node_modules`, and no lockfile.
+- **git** and **make**.
+
+Nothing else. The instantiated project brings its own stack; the process layer does not
+care what it is.
+
+## After instantiating
+
+```bash
+make init NAME="Your project"   # rewrites this README, keeps the machinery
+make hooks                      # optional client-side pre-push guard
+make check                      # should be green on an empty backlog
+```
+
+Then apply `.github/rulesets/main.json` in Settings > Rules and require the
+`quality-gate` check. Until you do, `main` is protected by convention only - `make doctor`
+will keep saying so.
+
+## Extending
+
+- **A different stack**: point `testGlobs` in `sdlc.config.json` at your test files and
+  add your language's real test command behind `make test`. Nothing else is stack-bound.
+- **Another agent surface**: add a renderer in `tooling/src/generate.ts`. Never add a
+  second rules file.
+- **Different process knobs**: WIP limit, ID prefix, dashboard size and context cap all
+  live in `sdlc.config.json`.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

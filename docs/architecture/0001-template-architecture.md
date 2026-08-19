@@ -1,6 +1,6 @@
 # ADR 0001: Agentic SDLC Foundation Architecture
 
-- **Status**: Accepted
+- **Status**: Superseded in part by [ADR 0002](0002-process-as-checks.md)
 - **Deciders**: Architecture Team
 - **Date**: 2026-08-19
 
@@ -40,10 +40,10 @@ How can we structure a repository so that AI agents and human developers collabo
 
 ### Architectural Structure:
 - `AGENTS.md`: Universal behavioral contract and root entry point.
-- `docs/workflows/`: Phase-based SDLC playbooks (Spec -> Plan -> Build -> Verify -> Review).
+- `docs/lifecycle.md`: the three gates of the process (see ADR 0002; this was seven documents).
 - `docs/standards/`: Language-agnostic baseline standards for style, testing, error handling, and security.
 - `templates/`: Structured templates for PRDs, RFCs, Plans, ADRs, and QA checklists.
-- `.agents/`: Isolated adapter directory mapping vendor configurations to the core documentation.
+- `AGENTS.md`: the one instruction file; per-surface files are generated from it (see ADR 0002).
 - `tooling/`: Automated verification scripts ensuring links, structure, and quality remain intact.
 
 ### Positive Consequences:

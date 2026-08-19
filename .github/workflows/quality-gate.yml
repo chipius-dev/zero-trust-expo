@@ -1,24 +1,52 @@
 name: Quality Gate
 
+# This workflow deliberately contains no logic of its own. It calls the same make
+# targets a developer or agent runs locally, so local green and CI green cannot
+# diverge. If you need a new check, add it behind `make ci`, not here.
+
 on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
-  validate:
-    name: Validate SDLC & Documentation Quality
+  quality-gate:
+    name: quality-gate
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
         with:
-          python-version: "3.11"
+          fetch-depth: 0   # git-reality checks need history and all refs
 
-      - name: Run Quality Gate Suite
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.18"   # native TypeScript type stripping; no install step
+
+      - name: Verify the generator is deterministic and nothing was hand-edited
         run: |
-          bash tooling/scripts/check-quality.sh
+          make gen
+          git diff --exit-code || {
+            echo "::error::Generated files were stale. Run 'make gen' and commit the result."
+            exit 1
+          }
+
+      - name: Run the same checks developers run
+        run: make check
+
+      - name: Branch and PR naming
+        if: github.event_name == 'pull_request'
+        env:
+          BRANCH: ${{ github.head_ref }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: node tooling/src/cli.ts check-branch --branch="$BRANCH" --pr-title="$PR_TITLE"
+
+      - name: Secret scan
+        run: |
+          if git grep -nIE '(AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|xox[baprs]-[0-9A-Za-z-]{10,}|gh[pousr]_[0-9A-Za-z]{36})' -- . ':!*.example'; then
+            echo "::error::Possible credential committed."
+            exit 1
+          fi
+          echo "no credential patterns found"
