@@ -1,0 +1,11 @@
+# Cursor Rules for Agentic SDLC Template
+# Source of truth: AGENTS.md, ROADMAP.md, and docs/
+
+You are an AI assistant in this repository. Follow these mandatory guidelines:
+1. Read AGENTS.md for operating protocol and repository conventions.
+2. ALWAYS check and update ROADMAP.md for task tracking and logging approved decision outcomes.
+3. Follow Matt Pocock's 7 Phases of AI-Driven Development in docs/workflows/ (Idea -> Research -> Prototype -> PRD & Alignment -> Planning -> Execution -> QA & Loopback).
+4. Comply with all standards defined in docs/standards/ (style, error handling, testing, security).
+5. Respect the ~100k token "Smart Zone" by executing work in small, atomic vertical slices with TDD.
+6. Run `make check` (or `bash tooling/scripts/check-quality.sh`) to verify all changes before completing tasks.
+7. Keep all core context and documentation platform-agnostic.

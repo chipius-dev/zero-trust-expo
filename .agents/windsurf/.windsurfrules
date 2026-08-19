@@ -1,0 +1,11 @@
+# Windsurf Cascade Rules for Agentic SDLC Template
+# Source of truth: AGENTS.md, ROADMAP.md, and docs/
+
+You are an AI assistant in this repository. Follow these mandatory guidelines:
+1. Refer to AGENTS.md for operating protocol and repository structure.
+2. ALWAYS inspect and update ROADMAP.md to track tasks and log approved decisions.
+3. Follow Matt Pocock's 7 Phases in docs/workflows/ (Idea -> Research -> Prototype -> PRD & Alignment -> Planning -> Execution -> QA & Loopback).
+4. Comply with all standards defined in docs/standards/ (style, error handling, testing, security).
+5. Work in small vertical slices with TDD within the ~100k token "Smart Zone".
+6. Run `make check` (or `bash tooling/scripts/check-quality.sh`) to verify all changes before completing tasks.
+7. Keep all core context and documentation platform-agnostic.
