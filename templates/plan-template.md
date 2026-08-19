@@ -1,9 +1,9 @@
 # Implementation Plan: [Task / Feature Name]
 
 - **Status**: [Draft | In Progress | Completed]
-- **Roadmap Task ID**: [TSK-XXX in ROADMAP.md](file:///ROADMAP.md)
+- **Backlog item**: `ITEM-XXXX`
 - **Related Spec / PRD**: [Link to PRD]
-- **Estimated Smart Zone Sessions**: [e.g. 1-2 focused sessions]
+- **Slices**: [each slice is one story: one branch, one review]
 
 ---
 
@@ -41,7 +41,7 @@ Break the implementation into small, atomic vertical slices (max 3-5 files per s
   - Refactor for readability, modularity, and standards.
   - *Verification*: Tests still pass.
 - [ ] **Step 4: Update In-Repo Roadmap & Run Quality Gate**
-  - Transition task status in [`ROADMAP.md`](file:///ROADMAP.md) and run `make check`.
+  - Set the item's status and run `make check`.
   - *Verification*: Quality gate passes 100%.
 
 ---

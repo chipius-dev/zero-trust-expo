@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Client-side guard. Install with `make hooks`.
+#
+# This is convenience, not enforcement: any push can bypass it with --no-verify.
+# The same rules run in CI, where they cannot be skipped. Do not treat a green
+# pre-push as permission to skip CI, and do not weaken CI because this exists.
+set -euo pipefail
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+default="$(node -e 'try{process.stdout.write(JSON.parse(require("fs").readFileSync("sdlc.config.json","utf8")).defaultBranch||"main")}catch{process.stdout.write("main")}')"
+
+if [ "$branch" = "$default" ]; then
+  echo "pre-push: refusing to push directly to '$default'. Branch with 'make start ID=...'." >&2
+  exit 1
+fi
+
+make check
+node tooling/src/cli.ts check-branch

@@ -3,7 +3,7 @@
 - **Status**: [Proposed | Accepted | Deprecated | Superseded by ADR-XXXX]
 - **Deciders**: [Decision Makers / Authors]
 - **Date**: [YYYY-MM-DD]
-- **Roadmap Task Link**: [TSK-XXX in ROADMAP.md](file:///ROADMAP.md)
+- **Backlog item**: `ITEM-XXXX` (see [backlog/SCHEMA.md](../backlog/SCHEMA.md))
 
 ---
 
@@ -49,5 +49,5 @@
 ---
 
 ## 6. Implementation & Follow-up Tasks
-- [ ] Task 1 in [`ROADMAP.md`](file:///ROADMAP.md)
-- [ ] Task 2 in [`ROADMAP.md`](file:///ROADMAP.md)
+- [ ] Follow-up item `ITEM-XXXX`
+- [ ] Follow-up item `ITEM-XXXX`
