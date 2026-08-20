@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "asOf": {
-    "backlogDigest": "013bbacaf4"
+    "backlogDigest": "9008cef96c"
   },
   "counts": {
     "draft": 28,
@@ -93,7 +93,7 @@
       "id": "ITEM-0007",
       "type": "epic",
       "status": "ready",
-      "title": "Client-Side Data Model and API Contract",
+      "title": "Storage Adapter and Serialization Contract",
       "parent": "ITEM-0001",
       "owner": null,
       "branch": null,
@@ -393,16 +393,16 @@
       "id": "ITEM-0027",
       "type": "story",
       "status": "draft",
-      "title": "Define account and auth credential TypeScript interfaces",
+      "title": "Define core domain entity TypeScript interfaces",
       "parent": "ITEM-0007",
       "owner": null,
       "branch": null,
       "acceptance": [
         "should export an Account interface with an opaque accountId and no email or username field",
-        "should export an AuthCredential interface containing a PasswordVerifier and no plaintext password",
-        "should export API contract request and response types for account creation and login endpoints",
-        "should export a local expo-sqlite DDL string for the accounts and credentials tables",
-        "should compile with no errors under strict TypeScript mode"
+        "should export an AuthCredential interface containing a PasswordVerifier and no plaintext secret",
+        "should export a Session interface with opaque IDs for account and device with no domain payload",
+        "should export a Device interface with opaque deviceId and public key bytes but no device name",
+        "should compile with no errors under strict TypeScript mode with no storage engine imports"
       ],
       "path": "backlog/items/ITEM-0027.md"
     },
@@ -410,16 +410,16 @@
       "id": "ITEM-0028",
       "type": "story",
       "status": "draft",
-      "title": "Define encrypted object and version TypeScript interfaces",
+      "title": "Define server API contract request and response types",
       "parent": "ITEM-0007",
       "owner": null,
       "branch": null,
       "acceptance": [
-        "should export an EncryptedObject interface with only opaque IDs ciphertext and version fields",
-        "should export an ObjectVersion interface for history snapshots with no domain-semantic fields",
-        "should export API contract types for object create update and fetch endpoints",
-        "should export a local expo-sqlite DDL string for encrypted_objects and object_versions tables",
-        "should have no field named type category name or any other domain-semantic identifier"
+        "should export typed request and response shapes for account creation and login endpoints",
+        "should export typed request and response shapes for encrypted object put get and list endpoints",
+        "should export typed request and response shapes for device registration sync and revocation endpoints",
+        "should have no domain-semantic field in any server-facing type beyond opaque IDs and ciphertext",
+        "should compile with no errors under strict TypeScript mode with no storage or crypto library imports"
       ],
       "path": "backlog/items/ITEM-0028.md"
     },
@@ -427,16 +427,16 @@
       "id": "ITEM-0029",
       "type": "story",
       "status": "draft",
-      "title": "Define device sync event and revocation TypeScript types",
+      "title": "Define StorageAdapter interface and pipeline types",
       "parent": "ITEM-0007",
       "owner": null,
       "branch": null,
       "acceptance": [
-        "should export a Device interface with opaque deviceId and public key bytes but no device name field",
-        "should export a SyncEvent interface with only sequence number and encrypted payload fields",
-        "should export a Revocation interface for device and object tombstones",
-        "should export API contract types for device registration sync fetch and revocation endpoints",
-        "should export a local expo-sqlite DDL string for devices sync_events and revocations tables"
+        "should export a StorageAdapter interface with put get delete and list methods typed against EncryptedBlob",
+        "should export an EncodeService interface that accepts a domain object and returns an EncryptedBlob",
+        "should export a DecodeService interface that accepts an EncryptedBlob and returns a domain object",
+        "should confirm that decode applied to the output of encode returns the original input in a round-trip test",
+        "should have no import from any specific storage engine in the interface definitions"
       ],
       "path": "backlog/items/ITEM-0029.md"
     },
