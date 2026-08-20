@@ -2,20 +2,20 @@
 
 <!-- GENERATED FILE - DO NOT EDIT. Run `make gen`. Source: backlog/items/*.md -->
 
-Backlog digest `7af8195518`. This file changes only when the backlog changes.
+Backlog digest `baa91b92c9`. This file changes only when the backlog changes.
 
 ## Summary
 
 | | State | Count |
 | :-: | :--- | ---: |
 | o | Draft (not yet interrogated) | 28 |
-| * | Ready (interrogated, may be started) | 12 |
+| * | Ready (interrogated, may be started) | 14 |
 | > | In progress | 0 |
 | ! | Blocked | 0 |
 | x | Done | 0 |
 | - | Dropped | 0 |
 
-WIP 0/3. Open items 40, archived 0.
+WIP 0/3. Open items 42, archived 0.
 
 ## In flight
 
@@ -26,6 +26,7 @@ Nothing in progress.
 | ID | Type | Title | Parent |
 | :--- | :--- | :--- | :--- |
 | ITEM-0012 | story | Research and document cryptographic library candidates | ITEM-0002 |
+| ITEM-0042 | story | Archive zero-trust backlog and restore clean template state | ITEM-0041 |
 
 ## Status contradicting git
 

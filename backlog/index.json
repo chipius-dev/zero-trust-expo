@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "asOf": {
-    "backlogDigest": "7af8195518"
+    "backlogDigest": "baa91b92c9"
   },
   "counts": {
     "draft": 28,
-    "ready": 12,
+    "ready": 14,
     "in_progress": 0,
     "blocked": 0,
     "done": 0,
@@ -16,7 +16,8 @@
     "limit": 3
   },
   "next": [
-    "ITEM-0012"
+    "ITEM-0012",
+    "ITEM-0042"
   ],
   "blocked": [],
   "awaitingReview": [],
@@ -619,6 +620,33 @@
         "should confirm that no encrypted_objects row retains the old key_version after rotation completes"
       ],
       "path": "backlog/items/ITEM-0040.md"
+    },
+    {
+      "id": "ITEM-0041",
+      "type": "epic",
+      "status": "ready",
+      "title": "Project Close-Out and Template Restoration",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0041.md"
+    },
+    {
+      "id": "ITEM-0042",
+      "type": "story",
+      "status": "ready",
+      "title": "Archive zero-trust backlog and restore clean template state",
+      "parent": "ITEM-0041",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should archive all items ITEM-0001 through ITEM-0042 so that backlog/items/ contains only .gitkeep",
+        "should confirm make status shows zero open items after archival",
+        "should confirm make lint passes with zero errors and zero warnings after archival",
+        "should confirm make check is green after the final archive commit"
+      ],
+      "path": "backlog/items/ITEM-0042.md"
     }
   ],
   "archivedCount": 0
