@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "asOf": {
-    "backlogDigest": "4bbe4b14fa"
+    "backlogDigest": "9008cef96c"
   },
   "counts": {
-    "draft": 0,
-    "ready": 0,
+    "draft": 28,
+    "ready": 14,
     "in_progress": 0,
     "blocked": 0,
     "done": 0,
@@ -15,10 +15,639 @@
     "inProgress": 0,
     "limit": 3
   },
-  "next": [],
+  "next": [
+    "ITEM-0012",
+    "ITEM-0042"
+  ],
   "blocked": [],
   "awaitingReview": [],
   "drift": [],
-  "open": [],
+  "open": [
+    {
+      "id": "ITEM-0001",
+      "type": "initiative",
+      "status": "ready",
+      "title": "Zero-Trust Cross-Platform Cryptographic Architecture",
+      "parent": null,
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0001.md"
+    },
+    {
+      "id": "ITEM-0002",
+      "type": "epic",
+      "status": "ready",
+      "title": "Cryptographic Library Evaluation",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0002.md"
+    },
+    {
+      "id": "ITEM-0003",
+      "type": "epic",
+      "status": "ready",
+      "title": "Crypto Abstraction Layer",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0003.md"
+    },
+    {
+      "id": "ITEM-0004",
+      "type": "epic",
+      "status": "ready",
+      "title": "Key Hierarchy and Derivation",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0004.md"
+    },
+    {
+      "id": "ITEM-0005",
+      "type": "epic",
+      "status": "ready",
+      "title": "Authentication Protocol and Account Model",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0005.md"
+    },
+    {
+      "id": "ITEM-0006",
+      "type": "epic",
+      "status": "ready",
+      "title": "Encrypted Blob Storage Model",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0006.md"
+    },
+    {
+      "id": "ITEM-0007",
+      "type": "epic",
+      "status": "ready",
+      "title": "Storage Adapter and Serialization Contract",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0007.md"
+    },
+    {
+      "id": "ITEM-0008",
+      "type": "epic",
+      "status": "ready",
+      "title": "Device Trust and Enrollment",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0008.md"
+    },
+    {
+      "id": "ITEM-0009",
+      "type": "epic",
+      "status": "ready",
+      "title": "Synchronization Engine",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0009.md"
+    },
+    {
+      "id": "ITEM-0010",
+      "type": "epic",
+      "status": "ready",
+      "title": "Security Testing and Interoperability",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0010.md"
+    },
+    {
+      "id": "ITEM-0011",
+      "type": "epic",
+      "status": "ready",
+      "title": "Expo and React Native Integration",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0011.md"
+    },
+    {
+      "id": "ITEM-0012",
+      "type": "story",
+      "status": "ready",
+      "title": "Research and document cryptographic library candidates",
+      "parent": "ITEM-0002",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should produce a compatibility matrix documenting each library against all seven target platforms and required primitives",
+        "should document maintenance status audit history and known CVEs for each candidate library",
+        "should identify whether each candidate provides a pure JS or WASM implementation for every platform",
+        "should confirm whether each candidate is compatible with the Hermes JavaScript engine",
+        "should record at least three candidate libraries evaluated and rejected alternatives with reasons"
+      ],
+      "path": "backlog/items/ITEM-0012.md"
+    },
+    {
+      "id": "ITEM-0013",
+      "type": "story",
+      "status": "draft",
+      "title": "Write ADR for cryptographic library selection",
+      "parent": "ITEM-0002",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should record the chosen library with exact package names and versions in the ADR",
+        "should document why each rejected alternative was insufficient for the cross-platform requirement",
+        "should identify all native dependencies and WASM dependencies with their impact on each platform",
+        "should specify the upgrade strategy for moving to a new library version or replacing the library",
+        "should pass make lint with no errors after the ADR is committed and linked from the item"
+      ],
+      "path": "backlog/items/ITEM-0013.md"
+    },
+    {
+      "id": "ITEM-0014",
+      "type": "story",
+      "status": "draft",
+      "title": "Define CryptoProvider TypeScript interface and envelope types",
+      "parent": "ITEM-0003",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should export a CryptoProvider interface with all methods typed with no library types in the signature",
+        "should export an EncryptedEnvelope type that includes algorithm identifier key version and nonce",
+        "should export a KeyPurpose enum covering vault sync attachment device and recovery contexts",
+        "should compile without errors under strict TypeScript mode on all supported Node versions",
+        "should have no imports from the underlying cryptographic library in the interface file"
+      ],
+      "path": "backlog/items/ITEM-0014.md"
+    },
+    {
+      "id": "ITEM-0015",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement password hashing and verification with Argon2id",
+      "parent": "ITEM-0003",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should hash a password and return a PasswordVerifier that does not contain the plaintext password",
+        "should verify a correct password against its PasswordVerifier and return true",
+        "should return false when verifying an incorrect password without throwing an exception",
+        "should produce a different PasswordVerifier hash for the same password on successive calls",
+        "should encode the algorithm identifier and parameters in the stored PasswordVerifier"
+      ],
+      "path": "backlog/items/ITEM-0015.md"
+    },
+    {
+      "id": "ITEM-0016",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement AEAD encryption and decryption for encrypted envelopes",
+      "parent": "ITEM-0003",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should encrypt a plaintext and produce an EncryptedEnvelope with a random nonce each call",
+        "should decrypt an EncryptedEnvelope and return the original plaintext bytes",
+        "should throw an authentication error when the ciphertext has been modified",
+        "should throw an authentication error when the nonce has been modified",
+        "should throw an authentication error when the associated data does not match the encrypted value"
+      ],
+      "path": "backlog/items/ITEM-0016.md"
+    },
+    {
+      "id": "ITEM-0017",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement secure random byte generation across all platforms",
+      "parent": "ITEM-0003",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should generate a Uint8Array of the requested length using a CSPRNG on every target platform",
+        "should never produce the same 32-byte output on two successive calls in the same test run",
+        "should throw when called with a length of zero or a negative length",
+        "should use the platform CSPRNG without falling back to Math.random under any conditions"
+      ],
+      "path": "backlog/items/ITEM-0017.md"
+    },
+    {
+      "id": "ITEM-0018",
+      "type": "story",
+      "status": "draft",
+      "title": "Document formal key hierarchy with domain-separated derivation contexts",
+      "parent": "ITEM-0004",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should produce a committed Markdown document in docs/architecture describing each key in the hierarchy",
+        "should specify the exact domain separation string for every key purpose in the hierarchy",
+        "should define the purpose algorithm version and lifecycle state for every key in the hierarchy",
+        "should show why the vault key and sync key cannot be derived from each other given the same master key"
+      ],
+      "path": "backlog/items/ITEM-0018.md"
+    },
+    {
+      "id": "ITEM-0019",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement purpose-specific subkey derivation from master key",
+      "parent": "ITEM-0004",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should derive different byte sequences for vault and sync purposes from the same master key",
+        "should derive different byte sequences for version 1 and version 2 of the same purpose",
+        "should produce identical output on successive calls with identical inputs",
+        "should produce the same subkey from the same master key on Node and on Hermes"
+      ],
+      "path": "backlog/items/ITEM-0019.md"
+    },
+    {
+      "id": "ITEM-0020",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement key rotation for vault and sync keys",
+      "parent": "ITEM-0004",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should ... when ..."
+      ],
+      "path": "backlog/items/ITEM-0020.md"
+    },
+    {
+      "id": "ITEM-0021",
+      "type": "story",
+      "status": "draft",
+      "title": "Design auth flow separating credential check from crypto unlock",
+      "parent": "ITEM-0005",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should produce a sequence diagram committed to docs/architecture showing auth and crypto unlock as distinct phases",
+        "should demonstrate that a valid session token cannot decrypt vault data without the password",
+        "should show that the server receives no key material during authentication in the documented flow",
+        "should define the TypeScript interfaces for AuthState and CryptoUnlockState as separate types"
+      ],
+      "path": "backlog/items/ITEM-0021.md"
+    },
+    {
+      "id": "ITEM-0022",
+      "type": "story",
+      "status": "draft",
+      "title": "Evaluate and select password authentication protocol",
+      "parent": "ITEM-0005",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should evaluate OPAQUE SRP-6a and password-hash-over-TLS against the zero-trust authentication requirements",
+        "should record the chosen protocol in an ADR with exact reasons for rejecting the alternatives",
+        "should identify whether the chosen protocol requires server-side state and what that state reveals",
+        "should confirm the chosen protocol does not transmit the password or any key material to the server"
+      ],
+      "path": "backlog/items/ITEM-0022.md"
+    },
+    {
+      "id": "ITEM-0023",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement account creation and login flows",
+      "parent": "ITEM-0005",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should create an account without sending the plaintext password to the server",
+        "should derive the master key locally from the password without the server receiving key material",
+        "should authenticate an existing account and return an AuthState without decrypting the vault",
+        "should return an authentication failure when the password is incorrect without leaking timing information",
+        "should produce a CryptoUnlockState by combining AuthState with a local key derivation step"
+      ],
+      "path": "backlog/items/ITEM-0023.md"
+    },
+    {
+      "id": "ITEM-0024",
+      "type": "story",
+      "status": "draft",
+      "title": "Define versioned encrypted envelope specification",
+      "parent": "ITEM-0006",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should commit an envelope wire-format specification to docs/architecture as a Markdown document",
+        "should define each field with its byte length encoding and purpose",
+        "should include an envelope version field that allows future format migrations without breaking readers",
+        "should define how the associated data is constructed and what it authenticates",
+        "should show an example envelope in hex with field boundaries annotated"
+      ],
+      "path": "backlog/items/ITEM-0024.md"
+    },
+    {
+      "id": "ITEM-0025",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement domain model serialization to encrypted blob pipeline",
+      "parent": "ITEM-0006",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should serialise a TypeScript domain object to canonical JSON bytes deterministically",
+        "should encrypt the serialised bytes and return an EncryptedEnvelope conforming to the ITEM-0024 spec",
+        "should decrypt an EncryptedEnvelope and deserialise it back to the original domain object",
+        "should fail decryption when the key version in the envelope does not match the provided key",
+        "should produce identical ciphertext structure when run against the ITEM-0035 test vectors"
+      ],
+      "path": "backlog/items/ITEM-0025.md"
+    },
+    {
+      "id": "ITEM-0026",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement ciphertext padding strategy for metadata privacy",
+      "parent": "ITEM-0006",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should pad ciphertext to the next power-of-two bucket before encryption",
+        "should produce identical ciphertext sizes for two payloads that fall in the same bucket",
+        "should strip padding correctly during decryption and return the original plaintext",
+        "should document the chosen bucket sizes and the metadata inference they prevent"
+      ],
+      "path": "backlog/items/ITEM-0026.md"
+    },
+    {
+      "id": "ITEM-0027",
+      "type": "story",
+      "status": "draft",
+      "title": "Define core domain entity TypeScript interfaces",
+      "parent": "ITEM-0007",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should export an Account interface with an opaque accountId and no email or username field",
+        "should export an AuthCredential interface containing a PasswordVerifier and no plaintext secret",
+        "should export a Session interface with opaque IDs for account and device with no domain payload",
+        "should export a Device interface with opaque deviceId and public key bytes but no device name",
+        "should compile with no errors under strict TypeScript mode with no storage engine imports"
+      ],
+      "path": "backlog/items/ITEM-0027.md"
+    },
+    {
+      "id": "ITEM-0028",
+      "type": "story",
+      "status": "draft",
+      "title": "Define server API contract request and response types",
+      "parent": "ITEM-0007",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should export typed request and response shapes for account creation and login endpoints",
+        "should export typed request and response shapes for encrypted object put get and list endpoints",
+        "should export typed request and response shapes for device registration sync and revocation endpoints",
+        "should have no domain-semantic field in any server-facing type beyond opaque IDs and ciphertext",
+        "should compile with no errors under strict TypeScript mode with no storage or crypto library imports"
+      ],
+      "path": "backlog/items/ITEM-0028.md"
+    },
+    {
+      "id": "ITEM-0029",
+      "type": "story",
+      "status": "draft",
+      "title": "Define StorageAdapter interface and pipeline types",
+      "parent": "ITEM-0007",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should export a StorageAdapter interface with put get delete and list methods typed against EncryptedBlob",
+        "should export an EncodeService interface that accepts a domain object and returns an EncryptedBlob",
+        "should export a DecodeService interface that accepts an EncryptedBlob and returns a domain object",
+        "should confirm that decode applied to the output of encode returns the original input in a round-trip test",
+        "should have no import from any specific storage engine in the interface definitions"
+      ],
+      "path": "backlog/items/ITEM-0029.md"
+    },
+    {
+      "id": "ITEM-0030",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement device enrollment with encrypted key transfer",
+      "parent": "ITEM-0008",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should generate a per-device asymmetric key pair without sending the private key to the server",
+        "should wrap the vault key for the new device using the device public key and store it on the server",
+        "should allow the new device to unwrap the vault key using its private key without the server learning the vault key",
+        "should register the device in the devices table with only the public key in a server-visible column"
+      ],
+      "path": "backlog/items/ITEM-0030.md"
+    },
+    {
+      "id": "ITEM-0031",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement device revocation and post-revocation key rotation",
+      "parent": "ITEM-0008",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should insert a revocation tombstone for the revoked device_id in the revocations table",
+        "should rotate the vault key after revocation so the revoked device cannot decrypt future objects",
+        "should re-wrap the new vault key for all remaining trusted devices after rotation",
+        "should ensure that objects encrypted with the old vault key are re-encrypted with the new key",
+        "should reject sync requests from the revoked device_id after revocation"
+      ],
+      "path": "backlog/items/ITEM-0031.md"
+    },
+    {
+      "id": "ITEM-0032",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement lost device recovery flow",
+      "parent": "ITEM-0008",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should derive a recovery key from the master key hierarchy using a dedicated purpose context",
+        "should allow a new device to recover vault access using only the user password and the recovery key",
+        "should not require a second trusted device to be online during recovery",
+        "should invalidate the recovery key after use and generate a new one"
+      ],
+      "path": "backlog/items/ITEM-0032.md"
+    },
+    {
+      "id": "ITEM-0033",
+      "type": "story",
+      "status": "draft",
+      "title": "Design incremental sync protocol with optimistic concurrency",
+      "parent": "ITEM-0009",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should produce a committed sequence diagram for the incremental sync request-response cycle",
+        "should define the conflict detection rule based on sequence numbers without revealing object semantics",
+        "should document how the client queues offline writes and replays them on reconnect",
+        "should demonstrate that the server cannot determine what was changed from the sync payload alone"
+      ],
+      "path": "backlog/items/ITEM-0033.md"
+    },
+    {
+      "id": "ITEM-0034",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement encrypted sync event log and conflict resolution",
+      "parent": "ITEM-0009",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should append an encrypted sync event for every object write with only a sequence number in plaintext",
+        "should detect a conflict when the server sequence number exceeds the expected sequence number",
+        "should apply last-write-wins resolution when a conflict is detected and log the losing write",
+        "should replay queued offline writes in order after reconnection without duplicating events",
+        "should allow a new device to reconstruct vault state by replaying sync events from sequence zero"
+      ],
+      "path": "backlog/items/ITEM-0034.md"
+    },
+    {
+      "id": "ITEM-0035",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement cross-platform encryption interoperability tests",
+      "parent": "ITEM-0010",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should commit test vectors as JSON files covering encrypt and decrypt for all required primitives",
+        "should verify each test vector decrypts to the expected plaintext on Node and on the Hermes test runner",
+        "should verify that an envelope encrypted with one set of vectors fails to decrypt with a wrong key",
+        "should verify that nonces are never repeated across one thousand successive encrypt calls in any test run",
+        "should run the vector suite in CI without requiring physical iOS Android or desktop devices"
+      ],
+      "path": "backlog/items/ITEM-0035.md"
+    },
+    {
+      "id": "ITEM-0036",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement threat model test scenarios for database compromise",
+      "parent": "ITEM-0010",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should produce a threat model document in docs/architecture listing at least 13 threat categories",
+        "should include a database-compromise test that populates the schema and asserts no plaintext passwords exist",
+        "should assert that no row in the encrypted_objects table contains a column with type or name in plaintext",
+        "should demonstrate what an attacker with the full database can and cannot determine per threat category",
+        "should include replay attack test confirming that a re-submitted encrypted envelope is rejected"
+      ],
+      "path": "backlog/items/ITEM-0036.md"
+    },
+    {
+      "id": "ITEM-0037",
+      "type": "story",
+      "status": "draft",
+      "title": "Document and validate metadata privacy mitigations",
+      "parent": "ITEM-0010",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should produce a metadata privacy analysis document cataloguing every unavoidable leakage",
+        "should distinguish between content confidentiality and metadata confidentiality for each leakage type",
+        "should document the mitigation in place for each leakage type from the implemented architecture",
+        "should confirm that opaque identifiers prevent username or email enumeration from the database"
+      ],
+      "path": "backlog/items/ITEM-0037.md"
+    },
+    {
+      "id": "ITEM-0038",
+      "type": "story",
+      "status": "draft",
+      "title": "Validate Expo managed workflow and Hermes compatibility",
+      "parent": "ITEM-0011",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should confirm the selected library loads and runs correctly in a Hermes-based React Native test environment",
+        "should document all required Metro bundler configuration for any WASM assets",
+        "should confirm all seven required cryptographic primitives are available in the Expo managed workflow",
+        "should identify any Expo config plugin requirements for native modules and document their impact"
+      ],
+      "path": "backlog/items/ITEM-0038.md"
+    },
+    {
+      "id": "ITEM-0039",
+      "type": "story",
+      "status": "draft",
+      "title": "Document Expo config plugin requirements for native crypto",
+      "parent": "ITEM-0011",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should document every Expo config plugin required by the cryptographic library with its exact package name",
+        "should document the impact of each native dependency on CI build time and reproducibility",
+        "should provide a working example of app.config.ts or app.json with all required plugin entries",
+        "should confirm the documented configuration produces a passing production build for iOS and Android"
+      ],
+      "path": "backlog/items/ITEM-0039.md"
+    },
+    {
+      "id": "ITEM-0040",
+      "type": "story",
+      "status": "draft",
+      "title": "Implement key rotation for vault and sync keys",
+      "parent": "ITEM-0004",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should derive the next version of the vault key without requiring the user to re-enter their password",
+        "should re-encrypt all encrypted_objects rows with the new vault key within a single atomic operation",
+        "should update the key_version column on each re-encrypted object to the new version",
+        "should leave the old vault key version readable for objects not yet re-encrypted during a partial rotation",
+        "should confirm that no encrypted_objects row retains the old key_version after rotation completes"
+      ],
+      "path": "backlog/items/ITEM-0040.md"
+    },
+    {
+      "id": "ITEM-0041",
+      "type": "epic",
+      "status": "ready",
+      "title": "Project Close-Out and Template Restoration",
+      "parent": "ITEM-0001",
+      "owner": null,
+      "branch": null,
+      "acceptance": [],
+      "path": "backlog/items/ITEM-0041.md"
+    },
+    {
+      "id": "ITEM-0042",
+      "type": "story",
+      "status": "ready",
+      "title": "Archive zero-trust backlog and restore clean template state",
+      "parent": "ITEM-0041",
+      "owner": null,
+      "branch": null,
+      "acceptance": [
+        "should archive all items ITEM-0001 through ITEM-0042 so that backlog/items/ contains only .gitkeep",
+        "should confirm make status shows zero open items after archival",
+        "should confirm make lint passes with zero errors and zero warnings after archival",
+        "should confirm make check is green after the final archive commit"
+      ],
+      "path": "backlog/items/ITEM-0042.md"
+    }
+  ],
   "archivedCount": 0
 }
